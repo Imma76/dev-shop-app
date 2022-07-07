@@ -55,7 +55,7 @@ class ProductController {
           _id: doc._id,
           request: {
             type: 'GET',
-            url: `${process.env.dev_route}${doc.productImage}`
+            url: `${process.env.production_route}${doc.productImage}`
           }
         }))
       });
