@@ -42,14 +42,15 @@ class UserController {
         if (!success) {
           return res.status(400).send({ status: false, message: 'Auth failed' });
         }
-        const token = jwt.sign({ email: user.email, id: user.id }, process.env.JWT_SECRET, { expiresIn: '1hr' });
+        console.log(user);
+        const token = jwt.sign({ email: user.email, id: user._id }, process.env.JWT_SECRET, { expiresIn: '1hr' });
         return res.status(200).send({
           status: true,
           data: {
             message:
                                 'logged in successfully',
             body: {
-              email: user.email, token
+              email: user.email, token: token
             }
           }
         });
